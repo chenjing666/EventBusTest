@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         });
         textView= (TextView) findViewById(R.id.tv);
     }
-    @Subscribe(threadMode = ThreadMode.MAIN)
+    @Subscribe(threadMode = ThreadMode.MAIN)//事件的处理会在UI线程中执行。事件处理时间不能太长，这个不用说的，长了会ANR的，对应的函数名是onEventMainThread。
     public void onEvent(EventBusTt evt){
         String msg="收到消息："+evt.getMsg();
         Toast.makeText(this, evt.getMsg(), Toast.LENGTH_SHORT).show();
